@@ -20,5 +20,3 @@ usage:
     test-workflow:
       jobs:
         - run_selenium
-
-
