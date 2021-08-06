@@ -1,13 +1,23 @@
 description: >
-  Sample example description.
+  This is a very simple orb which downloads and runs Selenium.
+  Java v.8 or higher is required for Selenium. 
+  It is suggested that that an executor with Java pre-installed should be used. 
 # Provide a use-case based example for using this orb.
 # Everything in the `usage` section will be displayed in the orb registry.
 # Comments are not retained.
 usage:
   version: 2.1
   orbs:
-    <orb-name>: <namespace>/<orb-name>@1.2.3
+    aarons-selenium-orb: aaronfox1/aarons-selenium-orb@1.0.0
   workflows:
-    use-my-orb:
+    use-this-orb:
       jobs:
-        - <orb-name>/<job-name>
+        build:
+           docker:
+             - image: circleci/python:3.6.2-stretch-browsers # example of an executor with Java installed
+               auth:
+                username: mydockerhub-user
+                password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
+        steps:
+          - checkout
+          - aarons-selenium-orb/run_selenium
