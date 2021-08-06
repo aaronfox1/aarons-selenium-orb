@@ -9,15 +9,13 @@ usage:
   version: 2.1
   orbs:
     aarons-selenium-orb: aaronfox1/aarons-selenium-orb@1.0.0
+  jobs:
+    run_selenium:
+      docker:
+        - image: circleci/python:3.6.2-stretch-browsers # example of an executor with Java installed
+      steps:
+        - checkout
+        - aarons-selenium-orb/run_selenium
   workflows:
-    use-this-orb:
-      jobs:
-        build:
-          docker:
-            - image: circleci/python:3.6.2-stretch-browsers # example of an executor with Java installed
-              auth:
-                username: mydockerhub-user
-                password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
-          steps:
-            - checkout
-            - aarons-selenium-orb/run_selenium
+    test-workflow:
+      - run_selenium
