@@ -19,4 +19,3 @@ usage:
   workflows:
     test-workflow:
       - run_selenium
-
