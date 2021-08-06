@@ -18,5 +18,7 @@ usage:
         - aarons-selenium-orb/run_selenium
   workflows:
     test-workflow:
-      - run_selenium
+      jobs:
+        - run_selenium
+
 
